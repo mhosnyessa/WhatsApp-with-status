@@ -283,7 +283,8 @@ class ChatTile extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.w300),
               ),
               SizedBox(height: 10),
-              Icon(this.pin == true? Icons.push_pin : Icons.circle, color: this.pin == true? Colors.grey: Colors.green),
+              Icon(this.pin == true ? Icons.push_pin : Icons.circle,
+                  color: this.pin == true ? Colors.grey : Colors.green),
             ],
           ),
           title: Text(name),
@@ -341,9 +342,11 @@ class Calls extends StatelessWidget {
             iconTrailing: Icon(
               Icons.phone,
               color: Colors.green,
-
             ),
-            subIcon: Icon(Icons.call_received, color: Colors.red,),
+            subIcon: Icon(
+              Icons.call_received,
+              color: Colors.red,
+            ),
           ),
           CallTile(
             image: 'assets/ali_muhammed_ali.jpg',
@@ -352,9 +355,11 @@ class Calls extends StatelessWidget {
             iconTrailing: Icon(
               Icons.videocam,
               color: Colors.green,
-
             ),
-            subIcon: Icon(Icons.call_made, color: Colors.green,),
+            subIcon: Icon(
+              Icons.call_made,
+              color: Colors.green,
+            ),
           ),
           CallTile(
             image: 'assets/boy.jpg',
@@ -363,9 +368,11 @@ class Calls extends StatelessWidget {
             iconTrailing: Icon(
               Icons.phone,
               color: Colors.green,
-
             ),
-            subIcon: Icon(Icons.call_received, color: Colors.red,),
+            subIcon: Icon(
+              Icons.call_received,
+              color: Colors.red,
+            ),
           ),
           CallTile(
             image: 'assets/elif_shafak.jpg',
@@ -374,9 +381,11 @@ class Calls extends StatelessWidget {
             iconTrailing: Icon(
               Icons.videocam,
               color: Colors.green,
-
             ),
-            subIcon: Icon(Icons.call_made, color: Colors.green,),
+            subIcon: Icon(
+              Icons.call_made,
+              color: Colors.green,
+            ),
           ),
           CallTile(
             image: 'assets/boy.jpg',
@@ -385,9 +394,11 @@ class Calls extends StatelessWidget {
             iconTrailing: Icon(
               Icons.phone,
               color: Colors.green,
-
             ),
-            subIcon: Icon(Icons.call_received, color: Colors.red,),
+            subIcon: Icon(
+              Icons.call_received,
+              color: Colors.red,
+            ),
           ),
           CallTile(
             image: 'assets/sundar_pichai.jpg',
@@ -396,9 +407,11 @@ class Calls extends StatelessWidget {
             iconTrailing: Icon(
               Icons.phone,
               color: Colors.green,
-
             ),
-            subIcon: Icon(Icons.call_received, color: Colors.red,),
+            subIcon: Icon(
+              Icons.call_received,
+              color: Colors.red,
+            ),
           ),
           CallTile(
             image: 'assets/shokairi.jpg',
@@ -407,11 +420,12 @@ class Calls extends StatelessWidget {
             iconTrailing: Icon(
               Icons.phone,
               color: Colors.green,
-
             ),
-            subIcon: Icon(Icons.call_received, color: Colors.red,),
+            subIcon: Icon(
+              Icons.call_received,
+              color: Colors.red,
+            ),
           ),
-
         ],
       ),
     );
@@ -439,10 +453,7 @@ class CallTile extends StatelessWidget {
       trailing: iconTrailing,
       title: Text(name),
       subtitle: Row(
-        children: [
-          subIcon,
-          Text(timeAgo)
-        ],
+        children: [subIcon, Text(timeAgo)],
       ),
     );
   }
