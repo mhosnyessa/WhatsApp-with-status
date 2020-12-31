@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 //status page
 class Status extends StatelessWidget {
   @override
@@ -86,8 +85,6 @@ class Status extends StatelessWidget {
   }
 }
 
-
-
 //tile for each status
 class StatusTile extends StatelessWidget {
   final String asset, name, time;
@@ -104,7 +101,9 @@ class StatusTile extends StatelessWidget {
           title: Text(name),
           subtitle: Text(time),
           leading: CircleAvatar(
-            backgroundImage: AssetImage(asset),
+            backgroundImage: AssetImage(
+              asset,
+            ),
             radius: 25,
           ),
         ),

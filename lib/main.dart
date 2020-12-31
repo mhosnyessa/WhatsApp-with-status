@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'chats.dart';
 import 'status.dart';
 import 'calls.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: WholeApp(),
-      theme: ThemeData(primaryColor: Colors.teal[800]),
+      theme: ThemeData(
+        primaryColor: Colors.teal[800],
+      ),
     );
   }
 }
@@ -48,13 +53,15 @@ class WholeApp extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            Camera(),
-            Chats(),
-            Status(),
-            Calls(),
-          ],
+        body: SafeArea(
+                  child: TabBarView(
+            children: [
+              Camera(),
+              Chats(),
+              Status(),
+              Calls(),
+            ],
+          ),
         ),
       ),
     );
@@ -77,7 +84,6 @@ class Camera extends StatelessWidget {
   }
 }
 
-
 //class for a default tab /*actually just the name of the tab*/
 class TabBark extends StatelessWidget {
   final String title;
@@ -91,5 +97,3 @@ class TabBark extends StatelessWidget {
     );
   }
 }
-
-
