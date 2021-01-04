@@ -4,14 +4,34 @@ import 'pages/status.dart'; //status page
 import 'pages/calls.dart'; //calls page
 import 'pages/camera.dart'; //camera page
 
-
 //builduing the whole app under a widget called default tab controller /*camel case of course*/
+///
+///
+///
+///
+///
+///this one down here is just for making a *signature*
+///per-se just for a purpose that idk.
+///they said that this way I can write a clean and well-written
+typedef void FunWetherSelectedOfNot(int i);
+
+///
+///
+///
 class WholeApp extends StatefulWidget {
   @override
   _WholeAppState createState() => _WholeAppState();
 }
 
 class _WholeAppState extends State<WholeApp> {
+  bool selectionMode = false;
+
+  void updateState(int input) {
+    setState(() {
+      selectionMode = input > 0 ? true : false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -20,12 +40,17 @@ class _WholeAppState extends State<WholeApp> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('WhatsApp'),
-          actions: [
-            Icon(Icons.search),
-            SizedBox(width: 10),
-            Icon(Icons.more_vert),
-            SizedBox(width: 5),
-          ],
+          actions: !selectionMode
+              ? [
+                  Icon(Icons.search),
+                  SizedBox(width: 10),
+                  Icon(Icons.more_vert),
+                  SizedBox(width: 5),
+                ]
+              : [
+                  
+                  SizedBox(width: 5),
+                ],
           bottom: TabBar(
             indicatorColor: Colors.white,
             tabs: [
@@ -48,7 +73,7 @@ class _WholeAppState extends State<WholeApp> {
           child: TabBarView(
             children: [
               Camera(),
-              chatsForInstance,
+              Chats(),
               Status(),
               Calls(),
             ],
