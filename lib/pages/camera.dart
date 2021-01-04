@@ -7,12 +7,23 @@ class Camera extends StatelessWidget {
     return Container(
       color: Colors.cyan[900],
       child: Center(
-        child: Text(
-          'Sorry, camera is not working, \n try again next time',
-          style: TextStyle(color: Colors.white),
+        child: Stack(
+          children: [
+            Text(
+              'Sorry, camera is not working, \n try again next time',
+              style: TextStyle(color: Colors.white),
+            ),
+            Positioned(
+              top: -30,
+              child: Container(
+                height: 50,
+                width: 50,
+                color: Colors.red,
+              ),
+            )
+          ],
         ),
       ),
     );
   }
 }
-
