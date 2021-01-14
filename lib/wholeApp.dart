@@ -13,7 +13,7 @@ import 'pages/camera.dart'; //camera page
 ///this one down here is just for making a *signature*
 ///per-se just for a purpose that idk.
 ///they said that this way I can write a clean and well-written
-typedef void FunWetherSelectedOfNot(int i);
+//typedef void FunWetherSelectedOfNot(int i);
 
 ///
 ///
@@ -24,16 +24,20 @@ class WholeApp extends StatefulWidget {
 }
 
 class _WholeAppState extends State<WholeApp> {
-  bool selectionMode = false;
-
-  void updateState(int input) {
-    setState(() {
-      selectionMode = input > 0 ? true : false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    bool selectionMode = false;
+
+    void updateState(int selectedItems) {
+        selectionMode = (selectedItems > 0) ? true : false;
+      setState(() {
+        debugPrint(
+            'whole app is: $selectedItems and selection mode $selectionMode');
+
+        /// is the selection mode state$selectionMode
+      });
+    }
+
     return DefaultTabController(
       initialIndex: 1,
       length: 4,
@@ -48,8 +52,14 @@ class _WholeAppState extends State<WholeApp> {
                   SizedBox(width: 5),
                 ]
               : [
-                  
-                  SizedBox(width: 5),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(Icons.expand_more_sharp),
+                      ],
+                    ),
+                  )
                 ],
           bottom: TabBar(
             indicatorColor: Colors.white,
@@ -73,7 +83,18 @@ class _WholeAppState extends State<WholeApp> {
           child: TabBarView(
             children: [
               Camera(),
-              Chats(),
+              !selectionMode
+                  ? Chats(
+                      onChange: (int selectedItems) {
+                        updateState(selectedItems);
+                        debugPrint('wholeApp: $selectedItems');
+                      },
+                    )
+                  : Container(
+                      child: Center(
+                        child: Text('hello there'),
+                      ),
+                    ),
               Status(),
               Calls(),
             ],

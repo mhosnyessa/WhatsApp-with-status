@@ -14,7 +14,7 @@
     'Ali M. Ali',
     'Elif Shafak',
     'Sundar Pichai',
-    'Stefanie from English coach',
+    'Stefanie from the English coach',
     'my boy',
   ];
   //this list just for the message

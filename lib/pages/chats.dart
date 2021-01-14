@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'data/data.dart';
 
-//chats page
-//Chats chatsForInstance = new Chats();
-
+///chats page
+///Chats chatsForInstance = new Chats();
 ///
 ///
 ///
@@ -12,27 +11,42 @@ import 'data/data.dart';
 ///
 ///
 ///
+///
+///
+///
+///
+///
+///
 ///this one down below just for initiating a function...
-typedef int FunSelectedOrNot(int i);
+typedef int IntCallbackInt(int i);
 
 ///
 ///
+///
+typedef void Intfun(int i);
+
+///
+///
+///
 class Chats extends StatefulWidget {
+  Chats({@required this.onChange});
+  final Intfun onChange;
   @override
   _ChatsState createState() => _ChatsState();
 }
 
 class _ChatsState extends State<Chats> {
-  int selectedItems = 0;
-
   @override
   Widget build(BuildContext context) {
+    int selectedItems = 0;
+
     List<Widget> _allListTile = List.generate(
         7,
         (i) => new ChatTile(
-              onSelection: (int n){
-                selectedItems+= n;
-                debugPrint('$selectedItems');
+              onSelection: (int n) {
+                selectedItems += n;
+                this.widget.onChange(selectedItems);
+                debugPrint('chats : $selectedItems');
                 return selectedItems;
               },
               asset: '${assetsForMessages[i]}',
@@ -75,7 +89,7 @@ class ChatTile extends StatefulWidget {
   final String asset, name, message, time;
   final bool sent, pin;
   final int index;
-  final FunSelectedOrNot onSelection;
+  final IntCallbackInt onSelection;
 
   @override
   _ChatTileState createState() => _ChatTileState();
@@ -86,7 +100,7 @@ class _ChatTileState extends State<ChatTile> {
   int _itemsSelected = 0;
   @override
   Widget build(BuildContext context) {
-    FunSelectedOrNot onSelection = this.widget.onSelection ;
+    IntCallbackInt onSelection = this.widget.onSelection;
     return Column(
       children: [
         ListTile(
@@ -96,32 +110,30 @@ class _ChatTileState extends State<ChatTile> {
           onLongPress: () {
             _itemsSelected = onSelection(0);
             setState(() {
-              if(selected == true){
+              if (selected == true) {
                 _itemsSelected = onSelection(-1);
                 selected = false;
-                debugPrint('what a tile see is $_itemsSelected');
-              }else{
+                debugPrint('tile $_itemsSelected');
+              } else {
                 _itemsSelected = onSelection(1);
                 selected = true;
-                debugPrint('what a tile see is $_itemsSelected');
-
+                debugPrint('tile $_itemsSelected');
               }
             });
           },
           onTap: () {
             _itemsSelected = onSelection(0);
             setState(() {
-              if(_itemsSelected > 0){
-                if(selected == true){
-                _itemsSelected = onSelection(-1);
-                selected = false;
-                debugPrint('what a tile see is $_itemsSelected');
-              }else{
-                _itemsSelected = onSelection(1);
-                selected = true;
-                debugPrint('what a tile see is $_itemsSelected');
-
-              }
+              if (_itemsSelected > 0) {
+                if (selected == true) {
+                  _itemsSelected = onSelection(-1);
+                  selected = false;
+                  debugPrint('what a tile see is $_itemsSelected');
+                } else {
+                  _itemsSelected = onSelection(1);
+                  selected = true;
+                  debugPrint('what a tile see is $_itemsSelected');
+                }
               }
             });
 
@@ -190,6 +202,9 @@ class _ChatTileState extends State<ChatTile> {
 ///
 ///
 ///
+///
+///
+///
 ///this is just for adding the small circle at buttom-right
 ///of a pic when selected for every single chat
 ///***not best implementation but idk
@@ -201,6 +216,10 @@ class _ChatTileState extends State<ChatTile> {
 ///****************************
 ///****************************
 ///
+///
+///
+///
+
 class SmallCircle extends StatefulWidget {
   final bool selected;
   const SmallCircle({this.selected});
